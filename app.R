@@ -22,22 +22,12 @@ ui <- dashboardPage(
     sidebarMenu(
       id='sidebarMenuid',
       menuItem(
-        'What',
+        'What is HeatBite?',
         tabName='what',
         icon=ionicon('pizza')
       ),
       menuItem(
-        'Why',
-        tabName='why',
-        icon=ionicon('stats-chart')
-      ),
-      menuItem(
-        'How',
-        tabName='how',
-        icon=ionicon('laptop')
-      ),
-      menuItem(
-        'Who',
+        'Who is the developer?',
         tabName='who',
         icon=ionicon('person')
       )
