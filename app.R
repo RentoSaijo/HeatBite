@@ -45,11 +45,9 @@ ui <- dashboardPage(
       tabItem(
         tabName='what',
         jumbotron(
-          title='Welcome to HeatBite!',
+          title='Hungry yet?',
           status='info',
-          lead='Your home for viewing NHL statistics available via the nhlscraper R-package.',
-          btnName='Learn about nhlscraper',
-          href='https://rentosaijo.github.io/nhlscraper/'
+          lead='Crave it, slide it, bite it.',
         )
       )
     )
