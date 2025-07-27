@@ -98,7 +98,7 @@ ui <- dashboardPage(
           width: 100%;
         }'
       )),
-      tags$style(HTML(sprintf("
+      tags$style(HTML(sprintf('
     /* Body links you flag with class='hb-link' ------------------------*/
     .card-body a.hb-link,
     .card-body a.hb-link:visited   { 
@@ -124,7 +124,7 @@ ui <- dashboardPage(
       color: %1$s; 
       text-decoration: underline; 
     }
-  ", palette$secondary)))
+  ', palette$secondary)))
     ),
     
     # your theme
@@ -150,7 +150,7 @@ ui <- dashboardPage(
               'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
             ),
             bs4Card(
-              status       = "primary",
+              status       = 'primary',
               width        = 12,
               solidHeader  = FALSE,
               headerBorder = FALSE,
@@ -158,18 +158,18 @@ ui <- dashboardPage(
               collapsible  = FALSE,
               
               bs4Carousel(
-                id         = "photo_gallery",
+                id         = 'photo_gallery',
                 indicators = TRUE,        # little dots
                 
                 bs4CarouselItem(
-                  caption = "I love playing / coaching hockey!",
-                  tags$img(src = "assets/Hockey.jpg",
-                           style = "width:100%;height:auto;")
+                  caption = 'I love playing / coaching hockey!',
+                  tags$img(src = 'assets/Hockey.jpg',
+                           style = 'width:100%;height:auto;')
                 ),
                 bs4CarouselItem(
-                  caption = "I workout 4-5 days a week!",
-                  tags$img(src = "assets/Back.jpg",
-                           style = "width:100%;height:auto;")
+                  caption = 'I workout 4-5 days a week!',
+                  tags$img(src = 'assets/Back.jpg',
+                           style = 'width:100%;height:auto;')
                 )
               )
             )
@@ -222,30 +222,30 @@ ui <- dashboardPage(
               tags$ul(
                 tags$li(
                   tagList(
-                    "Developed R-package to scrape NHL data from NHL and ESPN APIs with ",
-                    tags$code("devtools"), " & ", tags$code("usethis"),
-                    ", reverse-engineering 50+ undocumented endpoints with ",
-                    tags$code("mitmproxy")
+                    'Developed R-package to scrape NHL data from NHL and ESPN APIs with ',
+                    tags$code('devtools'), ' & ', tags$code('usethis'),
+                    ', reverse-engineering 50+ undocumented endpoints with ',
+                    tags$code('mitmproxy')
                   )
                 ),
                 tags$li(
                   tagList(
-                    "Documented with ", tags$code("roxygen2"),
-                    " & maintained ", tags$code("pkgdown"), " ",
+                    'Documented with ', tags$code('roxygen2'),
+                    ' & maintained ', tags$code('pkgdown'), ' ',
                     tags$a(
-                      href   = "https://rentosaijo.github.io/nhlscraper/",
-                      target = "_blank",
+                      href   = 'https://rentosaijo.github.io/nhlscraper/',
+                      target = '_blank',
                       class='hb-link',
-                      "website"
+                      'website'
                     ),
-                    " for CRAN approval, being inducted into the ",
+                    ' for CRAN approval, being inducted into the ',
                     tags$a(
-                      href   = "https://cran.r-project.org/web/views/SportsAnalytics.html",
-                      target = "_blank",
+                      href   = 'https://cran.r-project.org/web/views/SportsAnalytics.html',
+                      target = '_blank',
                       class='hb-link',
-                      "SportsAnalytics"
+                      'SportsAnalytics'
                     ),
-                    " CRAN Task View and reaching 400+ downloads"
+                    ' CRAN Task View and reaching 400+ downloads'
                   )
                 )
               )
@@ -262,7 +262,7 @@ ui <- dashboardPage(
             width = 8,
             bs4Card(
               id='text1',
-              title        = 'What is HeatBite? / カーソルを文章の上に置くと和訳が出ます',
+              title        = 'What is HeatBite?',
               status       = 'secondary',
               width        = 12,
               solidHeader  = FALSE,
@@ -311,7 +311,7 @@ ui <- dashboardPage(
 # Setup server.
 server <- function(input, output, session) {
   addPopover(
-    id = "text1",
+    id = 'text1',
     options = list(
       title     = 'HeatBiteとは？',
       content   = 'HeatBiteは、「今、何を食べたいか」という瞬間的な欲求を、たった一度の直感的なスワイプで形にするモバイルアプリです。アプリを起動すると栄養バランスの取れた一皿が表示され、Cold-to-Hotバーをスライドするか「選択」をタップして魅力度を評価すると、エンジンが即座に学習し、残りの一日のマクロ栄養素を確認したうえで次に最適なメニューを提案します。料理を決定すると、HeatBiteは詳細なマクロ内訳、タイマー付きのステップごとの調理手順、さらに当日または一週間分の食事に必要な食材を統合した自動買い物リストを提示します。使い続けるほどに「ワークアウト後はスパイシーな料理」「休養日は軽めのボウル」といった傾向を学習するため、献立の事前計画や分量の手計測に煩わされることがなくなります。',
@@ -323,7 +323,7 @@ server <- function(input, output, session) {
   )
   
   addPopover(
-    id = "text2",
+    id = 'text2',
     options = list(
       title     = '誰のため？',
       content   = 'HeatBiteのユーザー体験は、栄養に関する意思決定で疲れを感じるあらゆる人を想定しています。減量を望みつつ献立作成が苦手な初心者、増量期と減量期を行き来しながらもマクロを厳密に管理したいアスリート、午後6時には思考力がほぼ残っていない多忙なビジネスパーソン、そして毎晩15分間夕食を巡って議論する家族やルームメイト。こうした人々が対象です。HeatBiteのAIは体格指標、フィットネス目標、アレルギー情報、リアルタイムの気分に基づいて提案をパーソナライズするため、同じインターフェースで、手早く高タンパクの昼食を探す大学生、子どものグルテン制限を管理する保護者、増量期に追加の500 kcalを確保したいパワーリフターといった多様なニーズを、指一本でスライダーを動かすだけでサポートできます。',
