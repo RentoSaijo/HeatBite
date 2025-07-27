@@ -163,7 +163,7 @@ ui <- dashboardPage(
                 
                 bs4CarouselItem(
                   caption = "I love playing / coaching hockey!",
-                  tags$img(src = "assets/Hockey.jpg",
+                  tags$img(src = "assets/Hockey.JPG",
                            style = "width:100%;height:auto;")
                 ),
                 bs4CarouselItem(
