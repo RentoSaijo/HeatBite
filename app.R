@@ -48,30 +48,30 @@ heatbite_theme <- create_theme(
 
 # Setup user interface.
 ui <- dashboardPage(
-  title = 'HeatBite',
-  header = dashboardHeader(
-    title = dashboardBrand(
-      title = 'HeatBite',
-      image = 'assets/Logo.png'
+  title='HeatBite',
+  header=dashboardHeader(
+    title=dashboardBrand(
+      title='HeatBite',
+      image='assets/Logo.png'
     )
   ),
-  sidebar = dashboardSidebar(
+  sidebar=dashboardSidebar(
     sidebarMenu(
-      id = 'sidebarMenuid',
+      id='sidebarMenuid',
       menuItem(
         'Who is Rento Saijo?',
-        tabName = 'who',
-        icon    = ionicon('person')
+        tabName='who',
+        icon=ionicon('person')
       ),
       menuItem(
         'Why this program?',
-        tabName = 'why',
-        icon    = ionicon('code')
+        tabName='why',
+        icon=ionicon('code')
       ),
       menuItem(
         'Crave it, slide it, bite it.',
-        tabName = 'what',
-        icon    = ionicon('pizza')
+        tabName='what',
+        icon=ionicon('pizza')
       )
     )
   ),
@@ -80,7 +80,7 @@ ui <- dashboardPage(
       href = 'https://www.linkedin.com/in/rentosaijo/',
       'LinkedIn'
     ),
-    right = '2025'
+    right = '@RentoSaijo | Developed with rshiny/bs4Dash | 2025'
   ),
   dark        = NULL,
   help        = NULL,
@@ -136,22 +136,22 @@ ui <- dashboardPage(
             ),
             bs4Card(
               align='center',
-              status       = "primary",
+              status       = 'primary',
               width        = 12,
               solidHeader  = FALSE,
               headerBorder = FALSE,
               elevation    = 3,
               collapsible  = FALSE,
               bs4Carousel(
-                id         = "photo_gallery",
+                id         = 'photo_gallery',
                 indicators = TRUE,
                 bs4CarouselItem(
-                  caption = "I love playing / coaching hockey!",
-                  tags$img(src = "assets/Hockey.JPG", style = "width:75%;height:auto;")
+                  caption = 'I love playing / coaching hockey!',
+                  tags$img(src = 'assets/Hockey.JPG', style = 'width:75%;height:auto;')
                 ),
                 bs4CarouselItem(
-                  caption = "I workout 4-5 days a week!",
-                  tags$img(src = "assets/Back.jpg", style = "width:75%;height:auto;")
+                  caption = 'I workout 4-5 days a week!',
+                  tags$img(src = 'assets/Back.jpg', style = 'width:75%;height:auto;')
                 )
               )
             )
@@ -179,7 +179,7 @@ ui <- dashboardPage(
                 href='https://github.com/RentoSaijo/nhlscraper',
                 target='_blank',
                 class='hb-link',
-                'Most Recent Project'
+                'Most Recent Completed Project'
               ),
               status       = 'secondary',
               width        = 12,
@@ -190,30 +190,34 @@ ui <- dashboardPage(
               tags$ul(
                 tags$li(
                   tagList(
-                    "Developed R-package to scrape NHL data from NHL and ESPN APIs with ",
-                    tags$code("devtools"), " & ", tags$code("usethis"),
-                    ", reverse-engineering 50+ undocumented endpoints with ",
-                    tags$code("mitmproxy")
+                    'Developed R-package to scrape NHL data from NHL and ESPN APIs with ',
+                    tags$code('devtools'), ' & ', tags$code('usethis'),
+                    ', reverse-engineering 50+ undocumented endpoints with ',
+                    tags$code('mitmproxy'),
+                    ' & decoding ',
+                    tags$code('client.bundle.js'),
+                    ' with ',
+                    tags$code('LLM')
                   )
                 ),
                 tags$li(
                   tagList(
-                    "Documented with ", tags$code("roxygen2"),
-                    " & maintained ", tags$code("pkgdown"), " ",
+                    'Documented with ', tags$code('roxygen2'),
+                    ' & maintained ', tags$code('pkgdown'), ' ',
                     tags$a(
-                      href   = "https://rentosaijo.github.io/nhlscraper/",
-                      target = "_blank",
+                      href   = 'https://rentosaijo.github.io/nhlscraper/',
+                      target = '_blank',
                       class='hb-link',
-                      "website"
+                      'website'
                     ),
-                    " for CRAN approval, being inducted into the ",
+                    ' for CRAN approval, being inducted into the ',
                     tags$a(
-                      href   = "https://cran.r-project.org/web/views/SportsAnalytics.html",
-                      target = "_blank",
+                      href   = 'https://cran.r-project.org/web/views/SportsAnalytics.html',
+                      target = '_blank',
                       class='hb-link',
-                      "SportsAnalytics"
+                      'SportsAnalytics'
                     ),
-                    " CRAN Task View & reaching 400+ downloads"
+                    ' CRAN Task View & reaching 400+ downloads'
                   )
                 )
               )
@@ -233,7 +237,7 @@ ui <- dashboardPage(
             ),
             bs4Card(
               id='text3',
-              title='Current/Future Projects',
+              title='Current Projects',
               status       = 'primary',
               width        = 12,
               solidHeader  = FALSE,
@@ -243,44 +247,178 @@ ui <- dashboardPage(
               tags$ul(
                 tags$li(
                   tagList(
-                    "Develop xG (expected goals) model with ", 
-                    tags$code("logistic"), 
+                    'Develop xG (expected goals) model with ', 
+                    tags$code('logistic'), 
                     ' regression & ', 
-                    tags$code("XGBoost"),
+                    tags$code('XGBoost'),
                     'trees'
                   )
                 ),
                 tags$li(
                   tagList(
-                    "Analyze value of each possession with ", 
-                    tags$code("linear"), 
+                    'Analyze value of each possession with ', 
+                    tags$code('linear'), 
                     ' & ', 
-                    tags$code("Ridge-Lasso"),
+                    tags$code('Ridge-Lasso'),
                     'regressions'
                   )
                 ),
                 tags$li(
                   tagList(
-                    'Write paper on "When should one (not) shoot at an empty net?" with ', 
-                    tags$code("logistic"), 
+                    'Write paper on \"When should one (not) shoot at an empty net?\" with ', 
+                    tags$code('logistic'), 
                     ' regression & ', 
-                    tags$code("Markov"),
+                    tags$code('Markov'),
                     'decision models'
                   )
                 ),
                 tags$li(
                   tagList(
                     'Investigate difference between analyst/fan sentiment on (social) media vs. objective statistics during a game with ', 
-                    tags$code("NLP")
+                    tags$code('NLP')
                   )
                 ),
                 tags$li(
                   tagList(
                     'Play with ', 
-                    tags$code("MediaPipe"),
+                    tags$code('MediaPipe'),
                     ' & ',
-                    tags$code("OpenCV"),
-                    ' (Image Classification) to answer "Do happier teams correlate with winning teams?"'
+                    tags$code('OpenCV'),
+                    ' (Image Classification) to answer \"Do happier teams correlate with winning teams?\"'
+                  )
+                )
+              )
+            )
+          )
+        )
+      ),
+      tabItem(
+        tabName = 'why',
+        fluidRow(
+          class = 'align-items-stretch',
+          column(
+            width = 4,
+            bs4Card(
+              title        = 'Technical Skills',
+              status       = 'primary',
+              width        = 12,
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
+            ),
+            bs4Card(
+              title='Strengths & Weaknesses',
+              width        = 12,
+              status       = 'secondary',
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              echarts4rOutput('technical_skills', height='240px')
+            ),
+          ),
+          column(
+            width = 4,
+            bs4Card(
+              align='center',
+              title='カーソルを文章の上に置くと和訳が出ます!',
+              width        = 12,
+              status       = 'primary',
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              tags$img(
+                src   = 'assets/RentoSaijo.jpeg',
+                alt   = 'Rento Saijo',
+                style = 'max-width: 360px; width: 100%; height: auto;'
+              )
+            ),
+            bs4Card(
+              id='text3',
+              title=tags$a(
+                href='https://github.com/RentoSaijo/nhlscraper',
+                target='_blank',
+                class='hb-link',
+                'Most Recent Completed Project'
+              ),
+              status       = 'secondary',
+              width        = 12,
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              tags$ul(
+                tags$li(
+                  tagList(
+                    'Developed R-package to scrape NHL data from NHL and ESPN APIs with ',
+                    tags$code('devtools'), ' & ', tags$code('usethis'),
+                    ', reverse-engineering 50+ undocumented endpoints with ',
+                    tags$code('mitmproxy')
+                  )
+                ),
+                tags$li(
+                  tagList(
+                    'Documented with ', tags$code('roxygen2'),
+                    ' & maintained ', tags$code('pkgdown'), ' ',
+                    tags$a(
+                      href   = 'https://rentosaijo.github.io/nhlscraper/',
+                      target = '_blank',
+                      class='hb-link',
+                      'website'
+                    ),
+                    ' for CRAN approval, being inducted into the ',
+                    tags$a(
+                      href   = 'https://cran.r-project.org/web/views/SportsAnalytics.html',
+                      target = '_blank',
+                      class='hb-link',
+                      'SportsAnalytics'
+                    ),
+                    ' CRAN Task View & reaching 400+ downloads'
+                  )
+                )
+              )
+            )
+          ),
+          column(
+            width = 4,
+            bs4Card(
+              title        = 'Programming Toolbox',
+              width        = 12,
+              status       = 'secondary',
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE
+            ),
+            bs4Card(
+              id='text3',
+              title='Current Projects',
+              status       = 'primary',
+              width        = 12,
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              tags$ul(
+                tags$li(
+                  tagList(
+                    'Develop xG (expected goals) model with ', 
+                    tags$code('logistic'), 
+                    ' regression & ', 
+                    tags$code('XGBoost'),
+                    'trees'
+                  )
+                ),
+                tags$li(
+                  tagList(
+                    'Analyze value of each possession with ', 
+                    tags$code('linear'), 
+                    ' & ', 
+                    tags$code('Ridge-Lasso'),
+                    'regressions'
                   )
                 )
               )
@@ -344,7 +482,7 @@ ui <- dashboardPage(
 # Setup server.
 server <- function(input, output, session) {
   addPopover(
-    id = "text1",
+    id = 'text1',
     options = list(
       title     = 'HeatBiteとは？',
       content   = 'HeatBiteは、「今、何を食べたいか」という瞬間的な欲求を、たった一度の直感的なスワイプで形にするモバイルアプリです。アプリを起動すると栄養バランスの取れた一皿が表示され、Cold-to-Hotバーをスライドするか「選択」をタップして魅力度を評価すると、エンジンが即座に学習し、残りの一日のマクロ栄養素を確認したうえで次に最適なメニューを提案します。料理を決定すると、HeatBiteは詳細なマクロ内訳、タイマー付きのステップごとの調理手順、さらに当日または一週間分の食事に必要な食材を統合した自動買い物リストを提示します。使い続けるほどに「ワークアウト後はスパイシーな料理」「休養日は軽めのボウル」といった傾向を学習するため、献立の事前計画や分量の手計測に煩わされることがなくなります。',
@@ -355,7 +493,7 @@ server <- function(input, output, session) {
     )
   )
   addPopover(
-    id = "text2",
+    id = 'text2',
     options = list(
       title     = '誰のため？',
       content   = 'HeatBiteのユーザー体験は、栄養に関する意思決定で疲れを感じるあらゆる人を想定しています。減量を望みつつ献立作成が苦手な初心者、増量期と減量期を行き来しながらもマクロを厳密に管理したいアスリート、午後6時には思考力がほぼ残っていない多忙なビジネスパーソン、そして毎晩15分間夕食を巡って議論する家族やルームメイト。こうした人々が対象です。HeatBiteのAIは体格指標、フィットネス目標、アレルギー情報、リアルタイムの気分に基づいて提案をパーソナライズするため、同じインターフェースで、手早く高タンパクの昼食を探す大学生、子どものグルテン制限を管理する保護者、増量期に追加の500 kcalを確保したいパワーリフターといった多様なニーズを、指一本でスライダーを動かすだけでサポートできます。',
@@ -377,6 +515,34 @@ server <- function(input, output, session) {
         radius=c('40%', '60%'),
         label     = list(show = FALSE),
         labelLine = list(show = FALSE)
+      )
+  })
+  technicals <- data.frame(
+    skill  = c('Mining', 'Analysis', 'Modeling',
+               'Application', 'Front-end'),
+    score  = c(8, 9, 7, 5, 2)
+  )
+  output$technical_skills <- renderEcharts4r({
+    technicals %>% 
+      e_charts(skill) %>% 
+      e_radar(
+        score, 
+        max = 10, 
+        legend = FALSE,
+        lineStyle = list(
+          color = palette$primary
+        ),
+        itemStyle = list(
+          color = palette$primary
+        )
+      ) %>%
+      e_radar_opts(
+        name = list(
+          textStyle = list(
+            color      = palette$neutral,
+            fontWeight = 'bold'
+          )
+        )
       )
   })
 }
