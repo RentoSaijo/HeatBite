@@ -135,6 +135,7 @@ ui <- dashboardPage(
               'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
             ),
             bs4Card(
+              align='center',
               status       = "primary",
               width        = 12,
               solidHeader  = FALSE,
@@ -146,11 +147,11 @@ ui <- dashboardPage(
                 indicators = TRUE,
                 bs4CarouselItem(
                   caption = "I love playing / coaching hockey!",
-                  tags$img(src = "assets/Hockey.JPG", style = "width:100%;height:auto;")
+                  tags$img(src = "assets/Hockey.JPG", style = "width:75%;height:auto;")
                 ),
                 bs4CarouselItem(
                   caption = "I workout 4-5 days a week!",
-                  tags$img(src = "assets/Back.jpg", style = "width:100%;height:auto;")
+                  tags$img(src = "assets/Back.jpg", style = "width:75%;height:auto;")
                 )
               )
             )
@@ -158,6 +159,7 @@ ui <- dashboardPage(
           column(
             width = 4,
             bs4Card(
+              align='center',
               title='カーソルを文章の上に置くと和訳が出ます!',
               width        = 12,
               status       = 'primary',
@@ -228,6 +230,60 @@ ui <- dashboardPage(
               elevation    = 3,
               collapsible  = FALSE,
               echarts4rOutput('programming_toolbox', height='240px')
+            ),
+            bs4Card(
+              id='text3',
+              title='Current/Future Projects',
+              status       = 'primary',
+              width        = 12,
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              tags$ul(
+                tags$li(
+                  tagList(
+                    "Develop xG (expected goals) model with ", 
+                    tags$code("logistic"), 
+                    ' regression & ', 
+                    tags$code("XGBoost"),
+                    'trees'
+                  )
+                ),
+                tags$li(
+                  tagList(
+                    "Analyze value of each possession with ", 
+                    tags$code("linear"), 
+                    ' & ', 
+                    tags$code("Ridge-Lasso"),
+                    'regressions'
+                  )
+                ),
+                tags$li(
+                  tagList(
+                    'Write paper on "When should one (not) shoot at an empty net?" with ', 
+                    tags$code("logistic"), 
+                    ' regression & ', 
+                    tags$code("Markov"),
+                    'decision models'
+                  )
+                ),
+                tags$li(
+                  tagList(
+                    'Investigate difference between analyst/fan sentiment on (social) media vs. objective statistics during a game with ', 
+                    tags$code("NLP")
+                  )
+                ),
+                tags$li(
+                  tagList(
+                    'Play with ', 
+                    tags$code("MediaPipe"),
+                    ' & ',
+                    tags$code("OpenCV"),
+                    ' (Image Classification) to answer "Do happier teams correlate with winning teams?"'
+                  )
+                )
+              )
             )
           )
         )
