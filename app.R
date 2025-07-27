@@ -26,13 +26,11 @@ heatbite_theme <- create_theme(
     light='#FFFFFF',
     dark=palette$neutral
   ),
-  
   bs4dash_vars(
     navbar_light_color=palette$neutral,
     navbar_light_hover_color=palette$secondary,
     navbar_light_active_color=palette$primary
   ),
-  
   bs4dash_sidebar_light(
     bg='#FFFFFF',
     color=palette$neutral,
@@ -41,7 +39,6 @@ heatbite_theme <- create_theme(
     submenu_hover_color=palette$primary,
     active_color=palette$primary
   ),
-  
   bs4dash_yiq(
     contrasted_threshold=10,
     text_dark=palette$neutral,
@@ -67,9 +64,9 @@ ui <- dashboardPage(
         icon    = ionicon('person')
       ),
       menuItem(
-        'Why for TOMODACHI?',
+        'Why this program?',
         tabName = 'why',
-        icon    = ionicon('people')
+        icon    = ionicon('code')
       ),
       menuItem(
         'Crave it, slide it, bite it.',
@@ -88,9 +85,7 @@ ui <- dashboardPage(
   dark        = NULL,
   help        = NULL,
   scrollToTop = TRUE,
-  
   body = dashboardBody(
-    # Inject CSS to center all .card-title elements.
     tags$head(
       tags$style(HTML(
         '.card-title {
@@ -98,45 +93,35 @@ ui <- dashboardPage(
           width: 100%;
         }'
       )),
-      tags$style(HTML(sprintf("
-    /* Body links you flag with class='hb-link' ------------------------*/
-    .card-body a.hb-link,
-    .card-body a.hb-link:visited   { 
-      color: %1$s; 
-      text-decoration: underline;      /* ← always underlined */
-    }
-
-    /* Title / header links -------------------------------------------*/
-    .card-header a.hb-link,
-    .card-title  a.hb-link,
-    .card-header a.hb-link:visited { 
-      color: %1$s; 
-      text-decoration: underline; 
-    }
-
-    /* Optional: tweak hover focus tint (keeps underline) -------------*/
-    .card-body  a.hb-link:hover,
-    .card-header a.hb-link:hover,
-    .card-title  a.hb-link:hover,
-    .card-body  a.hb-link:focus,
-    .card-header a.hb-link:focus,
-    .card-title  a.hb-link:focus   { 
-      color: %1$s; 
-      text-decoration: underline; 
-    }
-  ", palette$secondary)))
+      tags$style(HTML(sprintf(
+        '.card-body a.hb-link,
+        .card-body a.hb-link:visited   { 
+          color: %1$s; 
+          text-decoration: underline;
+        }
+        .card-header a.hb-link,
+        .card-title  a.hb-link,
+        .card-header a.hb-link:visited { 
+          color: %1$s; 
+          text-decoration: underline; 
+        }
+        .card-body  a.hb-link:hover,
+        .card-header a.hb-link:hover,
+        .card-title  a.hb-link:hover,
+        .card-body  a.hb-link:focus,
+        .card-header a.hb-link:focus,
+        .card-title  a.hb-link:focus   { 
+          color: %1$s; 
+          text-decoration: underline; 
+        }', palette$secondary
+        )))
     ),
-    
-    # your theme
     use_theme(heatbite_theme),
-    
-    # your tabs
     tabItems(
       tabItem(
         tabName = 'who',
         fluidRow(
           class = 'align-items-stretch',
-          
           column(
             width = 4,
             bs4Card(
@@ -156,25 +141,20 @@ ui <- dashboardPage(
               headerBorder = FALSE,
               elevation    = 3,
               collapsible  = FALSE,
-              
               bs4Carousel(
                 id         = "photo_gallery",
-                indicators = TRUE,        # little dots
-                
+                indicators = TRUE,
                 bs4CarouselItem(
                   caption = "I love playing / coaching hockey!",
-                  tags$img(src = "assets/Hockey.JPG",
-                           style = "width:100%;height:auto;")
+                  tags$img(src = "assets/Hockey.JPG", style = "width:100%;height:auto;")
                 ),
                 bs4CarouselItem(
                   caption = "I workout 4-5 days a week!",
-                  tags$img(src = "assets/Back.jpg",
-                           style = "width:100%;height:auto;")
+                  tags$img(src = "assets/Back.jpg", style = "width:100%;height:auto;")
                 )
               )
             )
           ),
-          
           column(
             width = 4, 
             align = 'center',
@@ -245,7 +225,7 @@ ui <- dashboardPage(
                       class='hb-link',
                       "SportsAnalytics"
                     ),
-                    " CRAN Task View and reaching 400+ downloads"
+                    " CRAN Task View & reaching 400+ downloads"
                   )
                 )
               )
@@ -257,7 +237,6 @@ ui <- dashboardPage(
         tabName = 'what',
         fluidRow(
           class = 'align-items-stretch',
-          
           column(
             width = 8,
             bs4Card(
@@ -283,7 +262,6 @@ ui <- dashboardPage(
               'The experience is built for anyone who feels nutritional decision fatigue: beginners who want to lose weight but hate meal plans, athletes cycling between bulking and cutting phases who must stay macro-accurate, busy professionals who hit 6 P.M. with zero mental energy left, and families or roommates who spend fifteen minutes debating dinner every night. Because HeatBite’s AI personalizes suggestions based on body metrics, fitness goals, allergy flags, and real-time mood, the same interface can guide a college student looking for a quick high-protein lunch, a parent managing a child’s gluten sensitivity, or a powerlifter chasing an extra 500 kcal during a bulking block, all while keeping the interaction as simple as one thumb on a slider.'
             )
           ),
-          
           column(
             width = 4, 
             align = 'center',
@@ -321,7 +299,6 @@ server <- function(input, output, session) {
       html      = TRUE
     )
   )
-  
   addPopover(
     id = "text2",
     options = list(
@@ -333,19 +310,17 @@ server <- function(input, output, session) {
       html      = TRUE
     )
   )
-  
   languages <- data.frame(
     language=c('R', 'Python', 'Java', 'JavaScript', 'HTML', 'CSS'),
     percentage=c(35, 25, 15, 20, 2.5, 2.5)
   )
-  
   output$programming_toolbox <- renderEcharts4r({
     languages %>% 
       e_charts(language) %>% 
       e_pie(
         percentage,
         radius=c('40%', '65%'),
-        label     = list(show = FALSE),     # no text
+        label     = list(show = FALSE),
         labelLine = list(show = FALSE)
       )
   })
@@ -353,4 +328,3 @@ server <- function(input, output, session) {
 
 # Start shiny application.
 shinyApp(ui, server)
-
