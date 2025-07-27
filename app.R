@@ -181,7 +181,6 @@ ui <- dashboardPage(
               )
             )
           ),
-          
           column(
             width = 4,
             bs4Card(
