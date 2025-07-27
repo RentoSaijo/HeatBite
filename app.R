@@ -80,7 +80,7 @@ ui <- dashboardPage(
       href = 'https://www.linkedin.com/in/rentosaijo/',
       'LinkedIn'
     ),
-    right = '@RentoSaijo | Developed with rshiny/bs4Dash | 2025'
+    right = '@RentoSaijo | Developed with shiny/bs4Dash | 2025'
   ),
   dark        = NULL,
   help        = NULL,
@@ -323,80 +323,45 @@ ui <- dashboardPage(
             width = 4,
             bs4Card(
               align='center',
-              title='カーソルを文章の上に置くと和訳が出ます!',
               width        = 12,
-              status       = 'primary',
+              status       = 'secondary',
               solidHeader  = FALSE,
               headerBorder = FALSE,
               elevation    = 3,
               collapsible  = FALSE,
               tags$img(
-                src   = 'assets/RentoSaijo.jpeg',
+                src   = 'assets/Business.png',
                 alt   = 'Rento Saijo',
                 style = 'max-width: 360px; width: 100%; height: auto;'
               )
             ),
             bs4Card(
-              id='text3',
-              title=tags$a(
-                href='https://github.com/RentoSaijo/nhlscraper',
-                target='_blank',
-                class='hb-link',
-                'Most Recent Completed Project'
-              ),
-              status       = 'secondary',
+              title        = 'Entrepreneurship Skills',
+              status       = 'primary',
               width        = 12,
               solidHeader  = FALSE,
               headerBorder = FALSE,
               elevation    = 3,
               collapsible  = FALSE,
-              tags$ul(
-                tags$li(
-                  tagList(
-                    'Developed R-package to scrape NHL data from NHL and ESPN APIs with ',
-                    tags$code('devtools'), ' & ', tags$code('usethis'),
-                    ', reverse-engineering 50+ undocumented endpoints with ',
-                    tags$code('mitmproxy')
-                  )
-                ),
-                tags$li(
-                  tagList(
-                    'Documented with ', tags$code('roxygen2'),
-                    ' & maintained ', tags$code('pkgdown'), ' ',
-                    tags$a(
-                      href   = 'https://rentosaijo.github.io/nhlscraper/',
-                      target = '_blank',
-                      class='hb-link',
-                      'website'
-                    ),
-                    ' for CRAN approval, being inducted into the ',
-                    tags$a(
-                      href   = 'https://cran.r-project.org/web/views/SportsAnalytics.html',
-                      target = '_blank',
-                      class='hb-link',
-                      'SportsAnalytics'
-                    ),
-                    ' CRAN Task View & reaching 400+ downloads'
-                  )
-                )
-              )
+              'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
             )
           ),
           column(
             width = 4,
             bs4Card(
-              title        = 'Programming Toolbox',
+              title        = 'Social Skills',
+              status       = 'primary',
               width        = 12,
-              status       = 'secondary',
               solidHeader  = FALSE,
               headerBorder = FALSE,
               elevation    = 3,
-              collapsible  = FALSE
+              collapsible  = FALSE,
+              'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
             ),
             bs4Card(
               id='text3',
               title='Current Projects',
-              status       = 'primary',
+              status       = 'secondary',
               width        = 12,
               solidHeader  = FALSE,
               headerBorder = FALSE,
@@ -504,8 +469,8 @@ server <- function(input, output, session) {
     )
   )
   languages <- data.frame(
-    language=c('R', 'Python', 'Java', 'JavaScript', 'HTML', 'CSS'),
-    percentage=c(35, 25, 15, 20, 2.5, 2.5)
+    language=c('R', 'Python', 'SQL', 'Java', 'JavaScript', 'HTML', 'CSS'),
+    percentage=c(30, 25, 15, 10, 10, 8, 2)
   )
   output$programming_toolbox <- renderEcharts4r({
     languages %>% 
