@@ -230,8 +230,8 @@ ui <- dashboardPage(
                     tags$a(
                       href   = "https://cran.r-project.org/web/views/SportsAnalytics.html",
                       target = "_blank",
-                      "SportsAnalytics",
                       class='hb-link',
+                      "SportsAnalytics"
                     ),
                     " CRAN Task View and reaching 400+ downloads"
                   )
