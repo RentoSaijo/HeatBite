@@ -140,7 +140,6 @@ ui <- dashboardPage(
           column(
             width = 4,
             bs4Card(
-              id='text4',
               title        = 'What is HeatBite?',
               status       = 'secondary',
               width        = 12,
@@ -151,7 +150,6 @@ ui <- dashboardPage(
               'HeatBite is a mobile app that turns the split-second feeling of “What do I want to eat right now?” into a single, playful swipe. Each launch shows one nutritionally balanced dish; slide the Cold-to-Hot bar (or tap Select) to rate how tempting it feels, and the engine instantly learns, checks your remaining daily macros, and surfaces the next best option. When you choose a dish, HeatBite reveals a deeper macro breakdown, step-by-step cooking instructions with timers, and an auto-generated shopping list that merges ingredients across all meals you’ve lined up for the day or week. Over time, it spots patterns like “spicier food after workouts” and “lighter bowls on rest days”, so you never have to pre-plan menus or measure servings manually.'
             ),
             bs4Card(
-              id='text5',
               title        = 'Who is it for?',
               status       = 'secondary',
               width        = 12,
