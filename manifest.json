@@ -1982,7 +1982,10 @@
       "checksum": "ccbf62c05dcb71a02e1fd42f5cd7f74b"
     },
     "app.R": {
-      "checksum": "b60fee75c40814bd793569e3aa396e07"
+      "checksum": "50b9b0d1b7cb2c7b86b34de7df8d8378"
+    },
+    "assets/Back.jpg": {
+      "checksum": "33bfa5e751a293f6f9a0607d1fb6de4d"
     },
     "assets/Example1.png": {
       "checksum": "f61c6415bdefccb8b48876c3e55486eb"
@@ -1995,6 +1998,9 @@
     },
     "assets/Example4.png": {
       "checksum": "b27cc3de8e566bfc62bdd6183d2fd24b"
+    },
+    "assets/Hockey.JPG": {
+      "checksum": "ebcc61d3f9770bb9df50ec93646284e3"
     },
     "assets/Logo.png": {
       "checksum": "187f407e011e0622bd7c44de9aeece31"
