@@ -73,8 +73,8 @@ ui <- dashboardPage(
   ),
   footer = dashboardFooter(
     left  = a(
-      href = 'https://github.com/RentoSaijo',
-      '@RentoSaijo'
+      href = 'https://www.linkedin.com/in/rentosaijo/',
+      'LinkedIn'
     ),
     right = '2025'
   ),
@@ -82,16 +82,15 @@ ui <- dashboardPage(
   help        = NULL,
   scrollToTop = TRUE,
   
-  # <-- body must be a single dashboardBody(), not a tagList()
   body = dashboardBody(
-    # inject CSS to center all .card-title elements
+    # Inject CSS to center all .card-title elements.
     tags$head(
-      tags$style(HTML('
-        .card-title {
+      tags$style(HTML(
+        '.card-title {
           text-align: center !important;
           width: 100%;
-        }
-      '))
+        }'
+      ))
     ),
     
     # your theme
