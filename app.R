@@ -156,8 +156,7 @@ ui <- dashboardPage(
             )
           ),
           column(
-            width = 4, 
-            align = 'center',
+            width = 4,
             bs4Card(
               title='カーソルを文章の上に置くと和訳が出ます!',
               width        = 12,
@@ -171,19 +170,6 @@ ui <- dashboardPage(
                 alt   = 'Rento Saijo',
                 style = 'max-width: 360px; width: 100%; height: auto;'
               )
-            )
-          ),
-          column(
-            width = 4,
-            bs4Card(
-              title        = 'Programming Toolbox',
-              width        = 12,
-              status       = 'secondary',
-              solidHeader  = FALSE,
-              headerBorder = FALSE,
-              elevation    = 3,
-              collapsible  = FALSE,
-              echarts4rOutput('programming_toolbox', height='320px')
             ),
             bs4Card(
               id='text3',
@@ -193,7 +179,7 @@ ui <- dashboardPage(
                 class='hb-link',
                 'Most Recent Project'
               ),
-              status       = 'primary',
+              status       = 'secondary',
               width        = 12,
               solidHeader  = FALSE,
               headerBorder = FALSE,
@@ -229,6 +215,19 @@ ui <- dashboardPage(
                   )
                 )
               )
+            )
+          ),
+          column(
+            width = 4,
+            bs4Card(
+              title        = 'Programming Toolbox',
+              width        = 12,
+              status       = 'secondary',
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              echarts4rOutput('programming_toolbox', height='240px')
             )
           )
         )
@@ -319,7 +318,7 @@ server <- function(input, output, session) {
       e_charts(language) %>% 
       e_pie(
         percentage,
-        radius=c('40%', '65%'),
+        radius=c('40%', '60%'),
         label     = list(show = FALSE),
         labelLine = list(show = FALSE)
       )
