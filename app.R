@@ -2,6 +2,8 @@
 library(shiny)
 library(bs4Dash)
 library(fresh)
+library(echarts4r)
+library(tidyverse)
 
 # Set assets.
 shiny::addResourcePath('assets', 'assets/')
@@ -60,14 +62,19 @@ ui <- dashboardPage(
     sidebarMenu(
       id = 'sidebarMenuid',
       menuItem(
-        'Crave it, slide it, bite it.',
-        tabName = 'what',
-        icon    = ionicon('pizza')
+        'Who is Rento Saijo?',
+        tabName = 'who',
+        icon    = ionicon('person')
       ),
       menuItem(
         'Why for TOMODACHI?',
         tabName = 'why',
         icon    = ionicon('people')
+      ),
+      menuItem(
+        'Crave it, slide it, bite it.',
+        tabName = 'what',
+        icon    = ionicon('pizza')
       )
     )
   ),
@@ -90,7 +97,34 @@ ui <- dashboardPage(
           text-align: center !important;
           width: 100%;
         }'
-      ))
+      )),
+      tags$style(HTML(sprintf("
+    /* Body links you flag with class='hb-link' ------------------------*/
+    .card-body a.hb-link,
+    .card-body a.hb-link:visited   { 
+      color: %1$s; 
+      text-decoration: underline;      /* ← always underlined */
+    }
+
+    /* Title / header links -------------------------------------------*/
+    .card-header a.hb-link,
+    .card-title  a.hb-link,
+    .card-header a.hb-link:visited { 
+      color: %1$s; 
+      text-decoration: underline; 
+    }
+
+    /* Optional: tweak hover focus tint (keeps underline) -------------*/
+    .card-body  a.hb-link:hover,
+    .card-header a.hb-link:hover,
+    .card-title  a.hb-link:hover,
+    .card-body  a.hb-link:focus,
+    .card-header a.hb-link:focus,
+    .card-title  a.hb-link:focus   { 
+      color: %1$s; 
+      text-decoration: underline; 
+    }
+  ", palette$secondary)))
     ),
     
     # your theme
@@ -99,15 +133,15 @@ ui <- dashboardPage(
     # your tabs
     tabItems(
       tabItem(
-        tabName = 'what',
+        tabName = 'who',
         fluidRow(
           class = 'align-items-stretch',
           
           column(
-            width = 8,
+            width = 4,
             bs4Card(
               id='text1',
-              title        = 'What is HeatBite? / 日本語翻訳はハバーしてください。',
+              title        = 'What is HeatBite?',
               status       = 'secondary',
               width        = 12,
               solidHeader  = FALSE,
@@ -125,7 +159,117 @@ ui <- dashboardPage(
               headerBorder = FALSE,
               elevation    = 3,
               collapsible  = FALSE,
-              'The experience is built for anyone who feels nutritional decision fatigue: beginners who want to lose weight but hate meal plans, athletes cycling between bulking and cutting phases who must stay macro-accurate, busy professionals who hit 6 p.m. with zero mental energy left, and families or roommates who spend fifteen minutes debating dinner every night. Because HeatBite’s AI personalizes suggestions based on body metrics, fitness goals, allergy flags, and real-time mood, the same interface can guide a college student looking for a quick high-protein lunch, a parent managing a child’s gluten sensitivity, or a powerlifter chasing an extra 500 kcal during a bulking block, all while keeping the interaction as simple as one thumb on a slider.'
+              'The experience is built for anyone who feels nutritional decision fatigue: beginners who want to lose weight but hate meal plans, athletes cycling between bulking and cutting phases who must stay macro-accurate, busy professionals who hit 6 P.M. with zero mental energy left, and families or roommates who spend fifteen minutes debating dinner every night. Because HeatBite’s AI personalizes suggestions based on body metrics, fitness goals, allergy flags, and real-time mood, the same interface can guide a college student looking for a quick high-protein lunch, a parent managing a child’s gluten sensitivity, or a powerlifter chasing an extra 500 kcal during a bulking block, all while keeping the interaction as simple as one thumb on a slider.'
+            )
+          ),
+          
+          column(
+            width = 4, 
+            align = 'center',
+            bs4Card(
+              title='カーソルを文章の上に置くと和訳が出ます!',
+              width        = 12,
+              status       = 'primary',
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              tags$img(
+                src   = 'assets/RentoSaijo.jpeg',
+                alt   = 'Rento Saijo',
+                style = 'max-width: 360px; width: 100%; height: auto;'
+              )
+            )
+          ),
+          
+          column(
+            width = 4,
+            bs4Card(
+              title        = 'Programming Toolbox',
+              width        = 12,
+              status       = 'secondary',
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              echarts4rOutput('programming_toolbox', height='320px')
+            ),
+            bs4Card(
+              id='text3',
+              title=tags$a(
+                href='https://github.com/RentoSaijo/nhlscraper',
+                target='_blank',
+                class='hb-link',
+                'Most Recent Project'
+              ),
+              status       = 'primary',
+              width        = 12,
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              tags$ul(
+                tags$li(
+                  tagList(
+                    "Developed R-package to scrape NHL data from NHL and ESPN APIs with ",
+                    tags$code("devtools"), " & ", tags$code("usethis"),
+                    ", reverse-engineering 50+ undocumented endpoints with ",
+                    tags$code("mitmproxy")
+                  )
+                ),
+                tags$li(
+                  tagList(
+                    "Documented with ", tags$code("roxygen2"),
+                    " & maintained ", tags$code("pkgdown"), " ",
+                    tags$a(
+                      href   = "https://rentosaijo.github.io/nhlscraper/",
+                      target = "_blank",
+                      class='hb-link',
+                      "website"
+                    ),
+                    " for CRAN approval, being inducted into the ",
+                    tags$a(
+                      href   = "https://cran.r-project.org/web/views/SportsAnalytics.html",
+                      target = "_blank",
+                      "SportsAnalytics",
+                      class='hb-link',
+                    ),
+                    " CRAN Task View and reaching 400+ downloads"
+                  )
+                )
+              )
+            )
+          )
+        )
+      ),
+      tabItem(
+        tabName = 'what',
+        fluidRow(
+          class = 'align-items-stretch',
+          
+          column(
+            width = 8,
+            bs4Card(
+              id='text1',
+              title        = 'What is HeatBite? / カーソルを文章の上に置くと和訳が出ます',
+              status       = 'secondary',
+              width        = 12,
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              'HeatBite is a mobile app that turns the split-second feeling of “What do I want to eat right now?” into a single, playful swipe. Each launch shows one nutritionally balanced dish; slide the Cold-to-Hot bar (or tap Select) to rate how tempting it feels, and the engine instantly learns, checks your remaining daily macros, and surfaces the next best option. When you choose a dish, HeatBite reveals a deeper macro breakdown, step-by-step cooking instructions with timers, and an auto-generated shopping list that merges ingredients across all meals you’ve lined up for the day or week. Over time, it spots patterns like “spicier food after workouts” and “lighter bowls on rest days”, so you never have to pre-plan menus or measure servings manually.'
+            ),
+            bs4Card(
+              id='text2',
+              title        = 'Who is it for?',
+              status       = 'secondary',
+              width        = 12,
+              solidHeader  = FALSE,
+              headerBorder = FALSE,
+              elevation    = 3,
+              collapsible  = FALSE,
+              'The experience is built for anyone who feels nutritional decision fatigue: beginners who want to lose weight but hate meal plans, athletes cycling between bulking and cutting phases who must stay macro-accurate, busy professionals who hit 6 P.M. with zero mental energy left, and families or roommates who spend fifteen minutes debating dinner every night. Because HeatBite’s AI personalizes suggestions based on body metrics, fitness goals, allergy flags, and real-time mood, the same interface can guide a college student looking for a quick high-protein lunch, a parent managing a child’s gluten sensitivity, or a powerlifter chasing an extra 500 kcal during a bulking block, all while keeping the interaction as simple as one thumb on a slider.'
             )
           ),
           
@@ -178,6 +322,22 @@ server <- function(input, output, session) {
       html      = TRUE
     )
   )
+  
+  languages <- data.frame(
+    language=c('R', 'Python', 'Java', 'JavaScript', 'HTML', 'CSS'),
+    percentage=c(35, 25, 15, 20, 2.5, 2.5)
+  )
+  
+  output$programming_toolbox <- renderEcharts4r({
+    languages %>% 
+      e_charts(language) %>% 
+      e_pie(
+        percentage,
+        radius=c('40%', '65%'),
+        label     = list(show = FALSE),     # no text
+        labelLine = list(show = FALSE)
+      )
+  })
 }
 
 # Start shiny application.
