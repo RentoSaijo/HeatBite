@@ -3,7 +3,7 @@ library(shiny)
 library(bs4Dash)
 library(fresh)
 library(echarts4r)
-library(tidyverse)
+library(magrittr)
 
 # Set assets.
 shiny::addResourcePath('assets', 'assets/')
