@@ -80,7 +80,7 @@ ui <- dashboardPage(
       href = 'https://www.linkedin.com/in/rentosaijo/',
       'LinkedIn'
     ),
-    right = '@RentoSaijo | Developed with shiny/bs4Dash | 2025'
+    right = '@RentoSaijo | Developed with shiny & bs4Dash | 2025'
   ),
   dark        = NULL,
   help        = NULL,
@@ -147,11 +147,11 @@ ui <- dashboardPage(
                 indicators = TRUE,
                 bs4CarouselItem(
                   caption = 'I love playing / coaching hockey!',
-                  tags$img(src = 'assets/Hockey.JPG', style = 'width:75%;height:auto;')
+                  tags$img(src = 'assets/Hockey.JPG', style = 'width:80%;height:auto;')
                 ),
                 bs4CarouselItem(
                   caption = 'I workout 4-5 days a week!',
-                  tags$img(src = 'assets/Back.jpg', style = 'width:75%;height:auto;')
+                  tags$img(src = 'assets/Back.jpg', style = 'width:77%;height:auto;')
                 )
               )
             )
@@ -331,7 +331,7 @@ ui <- dashboardPage(
               collapsible  = FALSE,
               tags$img(
                 src   = 'assets/Business.png',
-                alt   = 'Rento Saijo',
+                alt   = 'Business',
                 style = 'max-width: 360px; width: 100%; height: auto;'
               )
             ),
@@ -359,33 +359,17 @@ ui <- dashboardPage(
               'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
             ),
             bs4Card(
-              id='text3',
-              title='Current Projects',
-              status       = 'secondary',
+              align='center',
               width        = 12,
+              status       = 'secondary',
               solidHeader  = FALSE,
               headerBorder = FALSE,
               elevation    = 3,
               collapsible  = FALSE,
-              tags$ul(
-                tags$li(
-                  tagList(
-                    'Develop xG (expected goals) model with ', 
-                    tags$code('logistic'), 
-                    ' regression & ', 
-                    tags$code('XGBoost'),
-                    'trees'
-                  )
-                ),
-                tags$li(
-                  tagList(
-                    'Analyze value of each possession with ', 
-                    tags$code('linear'), 
-                    ' & ', 
-                    tags$code('Ridge-Lasso'),
-                    'regressions'
-                  )
-                )
+              tags$img(
+                src   = 'assets/Global.png',
+                alt   = 'Global',
+                style = 'max-width: 360px; width: 100%; height: auto;'
               )
             )
           )
