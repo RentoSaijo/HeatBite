@@ -392,7 +392,7 @@ ui <- dashboardPage(
         fluidRow(
           class='align-items-stretch',
           column(
-            width=8,
+            width=9,
             bs4Card(
               id='what_text1',
               title='What is HeatBite?',
@@ -417,10 +417,10 @@ ui <- dashboardPage(
             )
           ),
           column(
-            width=4, 
+            width=3, 
             align='center',
             bs4Card(
-              title='Prototype / プロトタイプ',
+              title='Prototype',
               width=12,
               status='primary',
               solidHeader=FALSE,
@@ -430,7 +430,7 @@ ui <- dashboardPage(
               tags$img(
                 src='assets/Example3.png',
                 alt='HeatBite Prototype',
-                style='max-width:360px; width:100%; height:auto;'
+                style='width:100%; height:auto;'
               )
             )
           )
@@ -442,28 +442,6 @@ ui <- dashboardPage(
 
 # Setup server.
 server <- function(input, output, session) {
-  addPopover(
-    id = 'what_text1',
-    options = list(
-      title     = 'HeatBiteとは？',
-      content   = 'HeatBiteは、「今、何を食べたいか」という瞬間的な欲求を、たった一度の直感的なスワイプで形にするモバイルアプリです。アプリを起動すると栄養バランスの取れた一皿が表示され、Cold-to-Hotバーをスライドするか「選択」をタップして魅力度を評価すると、エンジンが即座に学習し、残りの一日のマクロ栄養素を確認したうえで次に最適なメニューを提案します。料理を決定すると、HeatBiteは詳細なマクロ内訳、タイマー付きのステップごとの調理手順、さらに当日または一週間分の食事に必要な食材を統合した自動買い物リストを提示します。使い続けるほどに「ワークアウト後はスパイシーな料理」「休養日は軽めのボウル」といった傾向を学習するため、献立の事前計画や分量の手計測に煩わされることがなくなります。',
-      placement = 'right',
-      trigger   = 'hover',
-      delay     = list(show = 0, hide = 100),
-      html      = TRUE
-    )
-  )
-  addPopover(
-    id = 'what_text2',
-    options = list(
-      title     = '誰のため？',
-      content   = 'HeatBiteのユーザー体験は、栄養に関する意思決定で疲れを感じるあらゆる人を想定しています。減量を望みつつ献立作成が苦手な初心者、増量期と減量期を行き来しながらもマクロを厳密に管理したいアスリート、午後6時には思考力がほぼ残っていない多忙なビジネスパーソン、そして毎晩15分間夕食を巡って議論する家族やルームメイト。こうした人々が対象です。HeatBiteのAIは体格指標、フィットネス目標、アレルギー情報、リアルタイムの気分に基づいて提案をパーソナライズするため、同じインターフェースで、手早く高タンパクの昼食を探す大学生、子どものグルテン制限を管理する保護者、増量期に追加の500 kcalを確保したいパワーリフターといった多様なニーズを、指一本でスライダーを動かすだけでサポートできます。',
-      placement = 'right',
-      trigger   = 'hover',
-      delay     = list(show = 0, hide = 100),
-      html      = TRUE
-    )
-  )
   languages <- data.frame(
     language=c('R', 'Python', 'SQL', 'Java', 'JavaScript', 'HTML', 'CSS'),
     percentage=c(30, 25, 15, 10, 10, 8, 2)
@@ -474,38 +452,55 @@ server <- function(input, output, session) {
       e_pie(
         percentage,
         radius=c('40%', '60%'),
-        label     = list(show = FALSE),
-        labelLine = list(show = FALSE)
+        label=list(show=FALSE),
+        labelLine=list(show=FALSE)
       )
   })
   technicals <- data.frame(
-    skill  = c('Mining', 'Analysis', 'Modeling',
-               'Application', 'Front-end'),
-    score  = c(8, 9, 7, 5, 2)
+    skill=c('Mining', 'Analysis', 'Modeling', 'Application', 'Front-end'),
+    score=c(8, 9, 7, 5, 2)
   )
   output$technical_skills <- renderEcharts4r({
     technicals %>% 
       e_charts(skill) %>% 
       e_radar(
         score, 
-        max = 10, 
-        legend = FALSE,
-        lineStyle = list(
-          color = palette$primary
-        ),
-        itemStyle = list(
-          color = palette$primary
-        )
+        max=10, 
+        legend=FALSE,
+        lineStyle=list(color=palette$primary),
+        itemStyle=list(color=palette$primary)
       ) %>%
       e_radar_opts(
-        name = list(
-          textStyle = list(
-            color      = palette$neutral,
-            fontWeight = 'bold'
+        name=list(
+          textStyle=list(
+            color=palette$neutral,
+            fontWeight='bold'
           )
         )
       )
   })
+  addPopover(
+    id='what_text1',
+    options=list(
+      title='HeatBiteとは？',
+      content='HeatBiteは、「今、何を食べたいか」という瞬間的な欲求を、たった一度の直感的なスワイプで形にするモバイルアプリです。アプリを起動すると栄養バランスの取れた一皿が表示され、Cold-to-Hotバーをスライドするか「選択」をタップして魅力度を評価すると、エンジンが即座に学習し、残りの一日のマクロ栄養素を確認したうえで次に最適なメニューを提案します。料理を決定すると、HeatBiteは詳細なマクロ内訳、タイマー付きのステップごとの調理手順、さらに当日または一週間分の食事に必要な食材を統合した自動買い物リストを提示します。使い続けるほどに「ワークアウト後はスパイシーな料理」「休養日は軽めのボウル」といった傾向を学習するため、献立の事前計画や分量の手計測に煩わされることがなくなります。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
+    id='what_text2',
+    options=list(
+      title='誰のため？',
+      content='HeatBiteのユーザー体験は、栄養に関する意思決定で疲れを感じるあらゆる人を想定しています。減量を望みつつ献立作成が苦手な初心者、増量期と減量期を行き来しながらもマクロを厳密に管理したいアスリート、午後6時には思考力がほぼ残っていない多忙なビジネスパーソン、そして毎晩15分間夕食を巡って議論する家族やルームメイト。こうした人々が対象です。HeatBiteのAIは体格指標、フィットネス目標、アレルギー情報、リアルタイムの気分に基づいて提案をパーソナライズするため、同じインターフェースで、手早く高タンパクの昼食を探す大学生、子どものグルテン制限を管理する保護者、増量期に追加の500 kcalを確保したいパワーリフターといった多様なニーズを、指一本でスライダーを動かすだけでサポートできます。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
 }
 
 # Start shiny application.
