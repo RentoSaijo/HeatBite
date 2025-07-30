@@ -318,7 +318,15 @@ ui <- dashboardPage(
               headerBorder=FALSE,
               elevation=3,
               collapsible=FALSE,
-              'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
+              'From reinforcement learning with ',
+              tags$code('Thompson'),
+              ' sampling for tutor-student matching project to optimizing ',
+              tags$code('SQL'),
+              ' queries for several sports analytics internships and time-series analysis with ',
+              tags$code('ARIMA'), 
+              'for an award-winning presentation at a data science competition, I\'ve had my fair share of experience with back-end development that I\'m looking to bring to the table and build upon; however, my sole exposure to the front-end has came from a ',
+              tags$code('React'),
+              ' audio memorization game for a contest years ago. I\'m looking to gain more insight from my peers and the experts throughout the program (the prep-seminars were great)!'
             ),
             bs4Card(
               title='Strengths & Weaknesses',
@@ -355,7 +363,7 @@ ui <- dashboardPage(
               headerBorder=FALSE,
               elevation=3,
               collapsible=FALSE,
-              'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
+              'I\'ve worked on many technical projects, packages, and even just ideas, both practical and silly alike, but I\'ve never thought about them through the lens of offering commercial service. Afterall, really how good is an idea if it can\'t at least self-sustain as a business model? I\'m looking to learn more about the business side of the technical world from much more experienced peers and mentors: how an idea can turn to service that is worthy of receiving financial compensation.' 
             )
           ),
           column(
@@ -379,8 +387,8 @@ ui <- dashboardPage(
               elevation=3,
               collapsible=FALSE,
               tags$img(
-                src='assets/Global.png',
-                alt='Global',
+                src='assets/DataFest.png',
+                alt='DataFest',
                 style='max-width:360px; width:100%; height:auto;'
               )
             )
@@ -457,8 +465,8 @@ server <- function(input, output, session) {
       )
   })
   technicals <- data.frame(
-    skill=c('Mining', 'Analysis', 'Modeling', 'Application', 'Front-end'),
-    score=c(8, 9, 7, 5, 2)
+    skill=c('Mining', 'Analysis', 'Modeling', 'Database', 'Application', 'Front-end'),
+    score=c(7, 9, 7, 6, 6, 2)
   )
   output$technical_skills <- renderEcharts4r({
     technicals %>% 
