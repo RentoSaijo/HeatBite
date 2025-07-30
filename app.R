@@ -522,6 +522,39 @@ server <- function(input, output, session) {
     )
   )
   addPopover(
+    id='who_text3',
+    options=list(
+      title='進行中のプロジェクト',
+      content='まず、ロジスティック回帰とXGBoostを用いたxG（期待得点）モデルの開発があり、さらに線形回帰とリッジ・ラッソ回帰で各ポゼッションの価値を定量化する分析にも挑戦している。また、「エンプティーネットにいつ撃つ・撃たないべきか？」をテーマに、ロジスティック回帰とマルコフ決定モデルを用いた論文の執筆を進めている。加えて、試合中におけるアナリストやファンの（ソーシャル）メディア上の感情と客観的な統計との乖離を自然言語処理で調査する研究、そしてMediaPipeとOpenCVによる画像分類で「よりハッピーなチームは勝利と相関するのか？」という問いにも取り組んでいる。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
+    id='why_text1',
+    options=list(
+      title='テクニカルの面で活かしたい・習得したいスキル',
+      content='強化学習のトンプソン・サンプリングを用いたチューターと学生のマッチングプロジェクトから、ゴルフやアイスホッケー分析に関するインターンシップでのSQLクエリ最適化、ASA Data Fest 2025で受賞したARIMAによる時系列解析のプレゼンまで、バックエンド開発やデータ収集・分析には数多く携わってきた。これらの経験を土台にさらに成長したい一方で、フロントエンドの経験は数年前のCongressional App Challengeで制作したReact製の音声記憶ゲームのみだ。本プログラムを通じて（プレップセミナーはもちろん良い経験となり）、他参加者や専門家から多くの知見を得たいと考えている。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
+    id='why_text2',
+    options=list(
+      title='テクニカルの面で活かしたい・習得したいスキル',
+      content='強化学習のトンプソン・サンプリングを用いたチューターと学生のマッチングプロジェクトから、ゴルフやアイスホッケー分析に関するインターンシップでのSQLクエリ最適化、ASA Data Fest 2025で受賞したARIMAによる時系列解析のプレゼンまで、バックエンド開発やデータ収集・分析には数多く携わってきた。これらの経験を土台にさらに成長したい一方で、フロントエンドの経験は数年前のCongressional App Challengeで制作したReact製の音声記憶ゲームのみだ。本プログラムを通じて（プレップセミナーはもちろん良い経験となり）、他参加者や専門家から多くの知見を得たいと考えている。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
     id='what_text1',
     options=list(
       title='HeatBiteとは？',
