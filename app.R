@@ -433,7 +433,7 @@ ui <- dashboardPage(
               headerBorder=FALSE,
               elevation=3,
               collapsible=FALSE,
-              'The experience is built for anyone who feels nutritional decision fatigue: beginners who want to lose weight but hate meal plans, athletes in bulking and cutting phases who must stay macro-accurate, busy professionals who hit 6 P.M. with zero mental energy left, and families or roommates who spend fifteen minutes debating dinner every night. Because HeatBite’s AI personalizes suggestions based on body metrics, fitness goals, allergy flags, and real-time mood, the same interface can guide a college student looking for a quick high-protein lunch, a parent managing a child’s gluten sensitivity, or a powerlifter chasing an extra 500 kcal during a bulking block, all while keeping the interaction as simple as one thumb on a slider.'
+              'The experience is built for anyone who feels nutritional decision fatigue: beginners who want to lose weight but hate meal plans, athletes in bulking and cutting phases who must stay macro-accurate, busy professionals who hit 6 P.M. with zero mental energy left, and families or roommates who spend tens of minutes debating dinner every night. Because HeatBite’s AI personalizes suggestions based on body metrics, fitness goals, allergy flags, and real-time mood, the same interface can guide a college student looking for a quick high-protein lunch, a parent managing a child’s gluten sensitivity, or a powerlifter chasing an extra 500 kcal during a bulking block, all while keeping the interaction as simple as one thumb on a slider.'
             ),
             fluidRow(
               bs4Card(
@@ -647,7 +647,40 @@ server <- function(input, output, session) {
     id='what_text2',
     options=list(
       title='誰のため？',
-      content='この体験は、食事選択に疲れを感じるあらゆる人を想定して設計されています。たとえば、減量したいけれど細かなミールプランは苦手な初心者、バルク期とカット期を行き来しながらマクロを正確に管理したいアスリート、「いざ、作ろう・食べよう」と思った時にはすでに思考力が尽きるほど忙しいビジネスパーソン、そして毎晩何十分も夕食をめぐって議論する家族やルームメイトなど。HeatBiteのAIは体格データ、フィットネス目標、アレルギー情報、リアルタイムの気分を基に提案をパーソナライズするため、高タンパクの手早いランチを探す大学生にも、子どものグルテン不耐症を気遣う親にも、バルク期に＋500 kcalを狙うパワーリフターにも、同じインターフェースで寄り添うことができる。しかも操作は親指一本でスライダーを動かすだけというシンプルさ。',
+      content='この体験は、食事選択に疲れを感じるあらゆる人を想定している。たとえば、減量したいけれど細かなミールプランは苦手な初心者、バルク期とカット期を行き来しながらマクロを正確に管理したいアスリート、「いざ、作ろう・食べよう」と思った時にはすでに思考力が尽きるほど忙しいビジネスパーソン、そして毎晩何十分も夕食をめぐって議論する家族やルームメイトなど。HeatBiteのAIは体格データ、フィットネス目標、アレルギー情報、リアルタイムの気分を基に提案をパーソナライズするため、高タンパクの手早いランチを探す大学生にも、子どものグルテン不耐症を気遣う親にも、バルク期に＋500 kcalを狙うパワーリフターにも、同じインターフェースで寄り添うことができる。しかも操作は親指一本でスライダーを動かすだけというシンプルさ。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
+    id='what_text3',
+    options=list(
+      title='51％',
+      content='が、「健康的な食事の提案をしてくれるAI」を求めている',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
+    id='what_text4',
+    options=list(
+      title='65％',
+      content='が、オンラインツールは食事管理に役立つと考えている',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
+    id='what_text5',
+    options=list(
+      title='必要性',
+      content='左側にある2024年 IFIC「食と健康調査」の統計に加え、英国の別研究によれば、大人は「今日は何を食べようか」と考えるのに1日平均43分、年間でなんと37時間も費やしていることが分かった。この時間をそっくり自由時間に充てつつ、より健康な身体まで手に入れられたら、あなたなら何を成し遂げますか？ 僕はこのプロジェクトに取り組むのが今から待ちきれません！',
       placement='right',
       trigger='hover',
       delay=list(show=0, hide=100),
