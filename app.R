@@ -125,6 +125,7 @@ ui <- dashboardPage(
           column(
             width=4,
             bs4Card(
+              id='who_text1',
               title='Biography',
               status='secondary',
               width=12,
@@ -182,7 +183,7 @@ ui <- dashboardPage(
               )
             ),
             bs4Card(
-              id='text3',
+              id='who_text2',
               title=tags$a(
                 href='https://github.com/RentoSaijo/nhlscraper',
                 target='_blank',
@@ -249,6 +250,7 @@ ui <- dashboardPage(
               echarts4rOutput('programming_toolbox', height='240px')
             ),
             bs4Card(
+              id='who_text3',
               title='Current Projects',
               status='primary',
               width=12,
@@ -311,6 +313,7 @@ ui <- dashboardPage(
           column(
             width=4,
             bs4Card(
+              id='why_text1',
               title='Technical Skills',
               status='primary',
               width=12,
@@ -356,6 +359,7 @@ ui <- dashboardPage(
               )
             ),
             bs4Card(
+              id='why_text2',
               title='Entrepreneurship Skills',
               status='primary',
               width=12,
@@ -369,6 +373,7 @@ ui <- dashboardPage(
           column(
             width=4,
             bs4Card(
+              id='why_text3',
               title='Social Skills',
               status='primary',
               width=12,
@@ -494,6 +499,28 @@ server <- function(input, output, session) {
         )
       )
   })
+  addPopover(
+    id='who_text1',
+    options=list(
+      title='バイオグラフィー',
+      content='現在Connecticut College1年生の西城廉統は、高校時代の夢だった学業とVarsityレベルのアイスホッケーを両立させるため4年間、ミシガン州内ボーディングスクールランク1位のCranbrook Kingswood Upper Schoolへ通った。州大会での優勝を経験し、データサイエンスへの情熱を見出した彼は、現在その二つの分野が交差するスポーツアナリティクスをさらに深く探求し、積極的に人脈を広げながら、学問・ソーシャル・フィジカルと3つの面での卓越性を目指している。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
+    id='who_text2',
+    options=list(
+      title='最も最近完成したプロジェクト',
+      content='NHLとESPNのAPIからデータを取得するRパッケージをdevtoolsとusethisを用いて開発。client.bundle.jsをLLMで解析したり、mitmproxyを用いて50以上の未公開エンドポイントをリバースエンジニア。更に、roxygen2にに従ったドキュメンテーション生成とpkgdownサイトの運用を行い、CRANに承認され、SportsAnalytics CRAN Task Viewに掲載された。公開１ヶ月ほどで400回以上ダウンロードされている。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
   addPopover(
     id='what_text1',
     options=list(
