@@ -376,7 +376,14 @@ ui <- dashboardPage(
               headerBorder=FALSE,
               elevation=3,
               collapsible=FALSE,
-              'Rento Saijo, now a freshman at Connecticut College pursuing his career in sports analytics, spent his G9-G12 years at Cranbrook Kingswood to realize his high school dream of balancing both academics and competitive ice hockey. Upon winning the State Championship and discovering his passion in data science, he now looks to advance a field in the intersection of them, actively building meaningful connections and seeking excellence in all facets.'
+              'Passing Eiken Grade 1 at 13 and scoring 115/120 on TOEFL at 16, I now remotely work part-time as a high school tutor, but mere English is not my strong-suit; rather, I\'m much more proud of the vast network I\'ve been able to build, ranging from past teammates who\'ve recently been drafted to the NHL and middle-aged parents whom I met in my self-founded gaming ',
+              tags$a(
+                href='https://www.youtube.com/results?search_query=GuildRock+SMP',
+                target='_blank',
+                class='hb-link',
+                'community'
+              ),
+              ' to developers and long-time friends across the coast. I look to continue expanding this web via the genuine connections I aim to build during this program.'
             ),
             bs4Card(
               align='center',
