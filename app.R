@@ -367,7 +367,7 @@ ui <- dashboardPage(
               headerBorder=FALSE,
               elevation=3,
               collapsible=FALSE,
-              'I\'ve worked on many technical projects, packages, and even just ideas, both practical and silly alike, but I\'ve never thought about them through the lens of offering commercial service. Afterall, really how good is an idea if it can\'t at least self-sustain as a business model? I\'m looking to learn more about the business side of the technical world from much more experienced peers and mentors: how an idea can turn to service that is worthy of receiving financial compensation.' 
+              'I\'ve worked on many technical projects, packages, and even just ideas, both practical and silly alike, but I\'ve never thought about them through the lens of offering commercial service. After all, really how good is an idea if it can\'t at least self-sustain as a business model? I\'m looking to learn more about the business side of the technical world from much more experienced peers and mentors: how an idea can turn to service that is worthy of receiving financial compensation.' 
             )
           ),
           column(
@@ -415,7 +415,7 @@ ui <- dashboardPage(
             width=9,
             bs4Card(
               id='what_text1',
-              title='What is HeatBite?',
+              title='Check out my business idea... What is HeatBite?',
               status='secondary',
               width=12,
               solidHeader=FALSE,
@@ -433,7 +433,49 @@ ui <- dashboardPage(
               headerBorder=FALSE,
               elevation=3,
               collapsible=FALSE,
-              'The experience is built for anyone who feels nutritional decision fatigue: beginners who want to lose weight but hate meal plans, athletes cycling between bulking and cutting phases who must stay macro-accurate, busy professionals who hit 6 P.M. with zero mental energy left, and families or roommates who spend fifteen minutes debating dinner every night. Because HeatBite’s AI personalizes suggestions based on body metrics, fitness goals, allergy flags, and real-time mood, the same interface can guide a college student looking for a quick high-protein lunch, a parent managing a child’s gluten sensitivity, or a powerlifter chasing an extra 500 kcal during a bulking block, all while keeping the interaction as simple as one thumb on a slider.'
+              'The experience is built for anyone who feels nutritional decision fatigue: beginners who want to lose weight but hate meal plans, athletes in bulking and cutting phases who must stay macro-accurate, busy professionals who hit 6 P.M. with zero mental energy left, and families or roommates who spend fifteen minutes debating dinner every night. Because HeatBite’s AI personalizes suggestions based on body metrics, fitness goals, allergy flags, and real-time mood, the same interface can guide a college student looking for a quick high-protein lunch, a parent managing a child’s gluten sensitivity, or a powerlifter chasing an extra 500 kcal during a bulking block, all while keeping the interaction as simple as one thumb on a slider.'
+            ),
+            fluidRow(
+              bs4Card(
+                id='what_text3',
+                title='of consumers want AI for healthy food suggestions',
+                width=3,
+                status='primary',
+                solidHeader=FALSE,
+                headerBorder=FALSE,
+                elevation=3,
+                collapsible=FALSE,
+                echarts4rOutput('want_ai', height='100px')
+              ),
+              bs4Card(
+                id='what_text4',
+                title='of consumers think online tools can help in diet',
+                width=3,
+                status='primary',
+                solidHeader=FALSE,
+                headerBorder=FALSE,
+                elevation=3,
+                collapsible=FALSE,
+                echarts4rOutput('online_tools', height='100px')
+              ),
+              bs4Card(
+                id='what_text5',
+                title='Why is it necessary?',
+                width=6,
+                status='primary',
+                solidHeader=FALSE,
+                headerBorder=FALSE,
+                elevation=3,
+                collapsible=FALSE,
+                'In conjunction with the statistics from the ',
+                tags$a(
+                  href='https://ific.org/wp-content/uploads/2024/06/2024-IFIC-Food-Health-Survey.pdf',
+                  target='_blank',
+                  class='hb-link',
+                  '2024 IFIC Food & Health Survey'
+                ),
+                ' on the left, another British study found that adults spend, on average, 43 minutes a day deciding what to eat; that is 37 hours a year! Imagine what you could be doing with that much more free time and a healthier body at the same time! I can\'t wait to get working on this!'
+              )
             )
           ),
           column(
@@ -449,6 +491,19 @@ ui <- dashboardPage(
               collapsible=FALSE,
               tags$img(
                 src='assets/Example3.png',
+                alt='HeatBite Prototype',
+                style='width:100%; height:auto;'
+              )
+            ),
+            bs4Card(
+              width=12,
+              status='secondary',
+              solidHeader=FALSE,
+              headerBorder=FALSE,
+              elevation=3,
+              collapsible=FALSE,
+              tags$img(
+                src='assets/Logo2.png',
                 alt='HeatBite Prototype',
                 style='width:100%; height:auto;'
               )
@@ -499,6 +554,18 @@ server <- function(input, output, session) {
         )
       )
   })
+  want_ai <- data.frame(value=c(0.51, 0.36, 0.21))
+  output$want_ai <- renderEcharts4r({
+    want_ai %>% 
+      e_charts() %>%
+      e_liquid(value, radius='90%', center=c('50%', '50%'), label=list(fontSize=27))
+  })
+  online_tools <- data.frame(value=c(0.65, 0.50, 0.35))
+  output$online_tools <- renderEcharts4r({
+    online_tools %>% 
+      e_charts() %>%
+      e_liquid(value, radius='90%', center=c('50%', '50%'), label=list(fontSize=27))
+  })
   addPopover(
     id='who_text1',
     options=list(
@@ -536,7 +603,7 @@ server <- function(input, output, session) {
     id='why_text1',
     options=list(
       title='テクニカルの面で活かしたい・習得したいスキル',
-      content='強化学習のトンプソン・サンプリングを用いたチューターと学生のマッチングプロジェクトから、ゴルフやアイスホッケー分析に関するインターンシップでのSQLクエリ最適化、ASA Data Fest 2025で受賞したARIMAによる時系列解析のプレゼンまで、バックエンド開発やデータ収集・分析には数多く携わってきた。これらの経験を土台にさらに成長したい一方で、フロントエンドの経験は数年前のCongressional App Challengeで制作したReact製の音声記憶ゲームのみだ。本プログラムを通じて（プレップセミナーはもちろん良い経験となり）、他参加者や専門家から多くの知見を得たいと考えている。',
+      content='強化学習のトンプソン・サンプリングを用いたチューターと学生のマッチングプロジェクトから、ゴルフやアイスホッケー分析に関するインターンシップでのSQLクエリ最適化、ASA DataFest 2025で受賞したARIMAによる時系列解析のプレゼンまで、バックエンド開発やデータ収集・分析には数多く携わってきた。これらの経験を土台にさらに成長したい一方で、フロントエンドの経験は数年前のCongressional App Challengeで制作したReact製の音声記憶ゲームのみだ。本プログラムを通じて（プレップセミナーはもちろん良い経験となり）、他参加者や専門家から多くの知見を得たいと考えている。',
       placement='right',
       trigger='hover',
       delay=list(show=0, hide=100),
@@ -546,8 +613,19 @@ server <- function(input, output, session) {
   addPopover(
     id='why_text2',
     options=list(
-      title='テクニカルの面で活かしたい・習得したいスキル',
-      content='強化学習のトンプソン・サンプリングを用いたチューターと学生のマッチングプロジェクトから、ゴルフやアイスホッケー分析に関するインターンシップでのSQLクエリ最適化、ASA Data Fest 2025で受賞したARIMAによる時系列解析のプレゼンまで、バックエンド開発やデータ収集・分析には数多く携わってきた。これらの経験を土台にさらに成長したい一方で、フロントエンドの経験は数年前のCongressional App Challengeで制作したReact製の音声記憶ゲームのみだ。本プログラムを通じて（プレップセミナーはもちろん良い経験となり）、他参加者や専門家から多くの知見を得たいと考えている。',
+      title='ビジネスの面で活かしたい・習得したいスキル',
+      content='実用的なものからちょっとユニークなものまで、数々の技術プロジェクトやパッケージ、そしてアイデアを形にしてきたが、それらを商業サービスとして提供する視点で考えたことはない。結局、自立したビジネスモデルにならないアイデアに、どれほどの価値があるのでしょうか？本プログラもを通じ、もっと経験豊富な仲間やメンターの力を借りて、技術の世界でアイデアを対価に値するサービスへと昇華させる「ビジネスの視点」 を学びたいと考えています。',
+      placement='right',
+      trigger='hover',
+      delay=list(show=0, hide=100),
+      html=TRUE
+    )
+  )
+  addPopover(
+    id='why_text3',
+    options=list(
+      title='ソーシャルの面で活かしたい・習得したいスキル',
+      content='13歳で英検1級に合格し、16歳でTOEFL115点を取得した僕は、現在バイトとして高校生の家庭教師を務めていますが、僕の強みは単なる英語力ではない。NHLにドラフトされた元チームメイト、自ら立ち上げたコミュニティで知り合っただいぶ歳が離れているゲーマー達、そして海を越えてつながる開発者や長年の友人に至るまで、幅広いネットワークを築いてきたことこそが誇りだ。本プログラムを通じて、背景が全く異なる仲間と協力し、こうした真のつながりをさらに広げていきたいと考えている。',
       placement='right',
       trigger='hover',
       delay=list(show=0, hide=100),
@@ -558,7 +636,7 @@ server <- function(input, output, session) {
     id='what_text1',
     options=list(
       title='HeatBiteとは？',
-      content='HeatBiteは、「今、何を食べたいか」という瞬間的な欲求を、たった一度の直感的なスワイプで形にするモバイルアプリです。アプリを起動すると栄養バランスの取れた一皿が表示され、Cold-to-Hotバーをスライドするか「選択」をタップして魅力度を評価すると、エンジンが即座に学習し、残りの一日のマクロ栄養素を確認したうえで次に最適なメニューを提案します。料理を決定すると、HeatBiteは詳細なマクロ内訳、タイマー付きのステップごとの調理手順、さらに当日または一週間分の食事に必要な食材を統合した自動買い物リストを提示します。使い続けるほどに「ワークアウト後はスパイシーな料理」「休養日は軽めのボウル」といった傾向を学習するため、献立の事前計画や分量の手計測に煩わされることがなくなります。',
+      content='HeatBite は、「いま何を食べたい？」という一瞬の迷いを、軽快なワンスワイプで解決するモバイルアプリ。起動するたびに栄養バランスの取れた一皿が表示され、冷⇄熱バーをスライド（または「選択」をタップ）して「食欲度」を評価すると、エンジンが即座に学習して残りのマクロ栄養素をチェックし、次の最適な候補を提案。料理を決めると、より詳しいマクロ内訳やタイマー付きの手順、さらにその日や週に並べた全メニューの食材を統合した自動買い物リストまで提示。使い続けるほどに「ワークアウト後は辛め」「オフ日は軽め」といった傾向を掴み、献立の事前計画や分量調整に煩わされることはなくなる。',
       placement='right',
       trigger='hover',
       delay=list(show=0, hide=100),
@@ -569,7 +647,7 @@ server <- function(input, output, session) {
     id='what_text2',
     options=list(
       title='誰のため？',
-      content='HeatBiteのユーザー体験は、栄養に関する意思決定で疲れを感じるあらゆる人を想定しています。減量を望みつつ献立作成が苦手な初心者、増量期と減量期を行き来しながらもマクロを厳密に管理したいアスリート、午後6時には思考力がほぼ残っていない多忙なビジネスパーソン、そして毎晩15分間夕食を巡って議論する家族やルームメイト。こうした人々が対象です。HeatBiteのAIは体格指標、フィットネス目標、アレルギー情報、リアルタイムの気分に基づいて提案をパーソナライズするため、同じインターフェースで、手早く高タンパクの昼食を探す大学生、子どものグルテン制限を管理する保護者、増量期に追加の500 kcalを確保したいパワーリフターといった多様なニーズを、指一本でスライダーを動かすだけでサポートできます。',
+      content='この体験は、食事選択に疲れを感じるあらゆる人を想定して設計されています。たとえば、減量したいけれど細かなミールプランは苦手な初心者、バルク期とカット期を行き来しながらマクロを正確に管理したいアスリート、「いざ、作ろう・食べよう」と思った時にはすでに思考力が尽きるほど忙しいビジネスパーソン、そして毎晩何十分も夕食をめぐって議論する家族やルームメイトなど。HeatBiteのAIは体格データ、フィットネス目標、アレルギー情報、リアルタイムの気分を基に提案をパーソナライズするため、高タンパクの手早いランチを探す大学生にも、子どものグルテン不耐症を気遣う親にも、バルク期に＋500 kcalを狙うパワーリフターにも、同じインターフェースで寄り添うことができる。しかも操作は親指一本でスライダーを動かすだけというシンプルさ。',
       placement='right',
       trigger='hover',
       delay=list(show=0, hide=100),
